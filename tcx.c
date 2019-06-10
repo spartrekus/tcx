@@ -394,8 +394,7 @@ void nlaunchscrot( )
        printf( "cmd: %s\n", cmdi );
 
        chdir( getenv( "HOME" ) );
-       printf( "PATH: %s\n", getcwd( cwdpath, PATH_MAX), PATH_MAX );
-
+       //printf( "PATH: %s\n", getcwd( cwdpath, PATH_MAX), PATH_MAX );
        fp = fopen( ".clipboard", "wb+" );
        fputs( "!fig{"    , fp  ); 
               fputs( fbasename(  lastfile  ) , fp  ); 
@@ -607,13 +606,16 @@ int main( int argc, char *argv[])
            else if ( ch == 65 )       nsystem( "  export DISPLAY=:0 ;  xdotool  key Up " );
         }
 
+
         else if ( ch == 23 )  //ctrl+w
         {
-            printf(  "  Write (take) screenshot... (scrot -s)\n" );
-            nlaunchscrot( );
-            printf( "\n");
-            printf( " => Entered (%s)\n", thefilename );
-            printf( "\n");
+            //printf(  "  Write (take) screenshot... (scrot -s)\n" );
+            //nlaunchscrot( );
+            //printf( "\n");
+            //printf( " => Entered (%s)\n", thefilename );
+            //printf( "\n");
+            printf(  "  Close app on display 0... (wmctrl)\n" );
+            nsystem( "  export DISPLAY=:0 ; wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz   " );
             ch = 0; 
         }
 
@@ -692,12 +694,19 @@ int main( int argc, char *argv[])
 
         else if ( ch == 4 )  
             nsystem( "  export DISPLAY=:0 ; xdotool key Next  " );
+
         else if ( ch == 21 )  
             nsystem( "  export DISPLAY=:0 ; xdotool key Prior " );
 
+
+        else if ( ch == 9 )  
+            nsystem( "  export DISPLAY=:0 ; xdotool key Tab " );
+
+        else if ( ch == ':' )  
+            nsystem( "  export DISPLAY=:0 ; xdotool key colon " );
+
         else if ( ch == 18 ) //ctrl+r for links 
             nsystem( "  export DISPLAY=:0 ; xdotool key ctrl+r " );
-
 
         else if ( ch == 27  ) nsystem( "  export DISPLAY=:0 ; xdotool  key escape ; xdotool key Escape " );
 
@@ -709,6 +718,10 @@ int main( int argc, char *argv[])
 
         else if ( ch == '+' )          nsystem( "  export DISPLAY=:0 ; xdotool  key plus " );
         else if ( ch == '-' )          nsystem( "  export DISPLAY=:0 ; xdotool  key minus " );
+
+        else if ( ch == '@' )          nsystem( "  export DISPLAY=:0 ; xdotool  key at " );
+        else if ( ch == '*' )          nsystem( "  export DISPLAY=:0 ; xdotool  key asterisk " );
+        else if ( ch == ',' )          nsystem( "  export DISPLAY=:0 ; xdotool  key comma " );
 
         else if ( ch == '<' ) 
                    nsystem( "  export DISPLAY=:0 ;   xdotool key less " ); 
