@@ -702,6 +702,9 @@ int main( int argc, char *argv[])
         else if ( ch == 9 )  
             nsystem( "  export DISPLAY=:0 ; xdotool key Tab " );
 
+        else if ( ch == 39 )  
+            nsystem( "  export DISPLAY=:0 ; xdotool key apostrophe " );
+
         else if ( ch == ':' )  
             nsystem( "  export DISPLAY=:0 ; xdotool key colon " );
 
