@@ -607,6 +607,7 @@ int main( int argc, char *argv[])
         }
 
 
+
         else if ( ch == 23 )  //ctrl+w
         {
             //printf(  "  Write (take) screenshot... (scrot -s)\n" );
@@ -615,9 +616,11 @@ int main( int argc, char *argv[])
             //printf( " => Entered (%s)\n", thefilename );
             //printf( "\n");
             printf(  "  Close app on display 0... (wmctrl)\n" );
-            nsystem( "  export DISPLAY=:0 ; wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz   " );
+            //nsystem( "  export DISPLAY=:0 ; wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz   " );
+            nsystem( "  export DISPLAY=:0 ;  xdotool  key control+w  " );
             ch = 0; 
         }
+
 
         else if ( ch == 20 )  //c+t
         {
@@ -683,8 +686,9 @@ int main( int argc, char *argv[])
         else if ( ch == 7 )  
             nsystem( "  export DISPLAY=:0 ; wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz   " );
 
+
         else if ( ch == 24 )  //ctrl+x
-            nsystem( "  export DISPLAY=:0 ; screen -d -m xterm -bg black -fg yellow " );
+            nsystem( "  export DISPLAY=:0 ; xterm -bg black -fg yellow -e screen -x " );
 
         else if ( ch == 2 )  //ctrl+b
             nsystem( "  export DISPLAY=:0 ; xdotool key ctrl+b " );
@@ -716,6 +720,8 @@ int main( int argc, char *argv[])
         else if ( ch == 10 )  nsystem( "  export DISPLAY=:0 ; xdotool  key Return " );
 
         else if ( ch == 32 )  nsystem( "  export DISPLAY=:0 ; xdotool  key space " );
+
+        else if ( ch == '?' )  nsystem( "  export DISPLAY=:0 ; xdotool  key question " );
 
         else if ( ch == 8 )            nsystem( "  export DISPLAY=:0 ; xdotool  key BackSpace " );
 
